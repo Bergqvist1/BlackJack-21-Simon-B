@@ -6,49 +6,61 @@ namespace Blackjack_21
         static void Main(string[] args)
         {
 
-            
             Random slumpkort = new Random();
 
-            Console.WriteLine("Välkommen till blackjack kingen");
-            Console.WriteLine("Välj ett alternativ");
-            Console.WriteLine("1: Spela Blackjack/21");
-            Console.WriteLine("2: Senaste vinnaren");
-            Console.WriteLine("3: Regler");
-            Console.WriteLine("4: Avsluta programmet");
+            Console.WriteLine("Välkommen till blackajack");
 
-            int menyVal = int.Parse(Console.ReadLine());
-            
-
-            while(menyVal != 4)
+            string menyVal = "0";
+            while(menyVal != "4")
             {
+                Console.WriteLine("Välj ett alternativ");
+                Console.WriteLine("1: Spela Blackjack");
+                Console.WriteLine("2: Visa senaste vinnaren");
+                Console.WriteLine("3: Visa spelets regler");
+                Console.WriteLine("4: Avsluta programmet");
 
+                menyVal = Console.ReadLine();
 
                 switch(menyVal)
                 {
-                    case 1:  
-                        Console.WriteLine("Välkommen till Blackjack, du kommer nu att få 2 start kort. Det kommer datorn också att få");
-                        int dittkort1 = slumpkort.Next(11);
-                        int dittkort2 = slumpkort.Next(11);
+                    case "1":
+
+                        Console.WriteLine("Välkommen till BlackJack, du kommer att få 2 slumpmässiga kort"); 
+                        int dittkort1 = slumpkort.Next(1,11); Console.WriteLine("Ditt första kort är"+ " " + dittkort1);
+                        int dittkort2 = slumpkort.Next(1, 11); Console.WriteLine("Ditt andra kort är"+ " " + dittkort2);
                         int dinaPoäng = dittkort1 + dittkort2;
-                        Console.WriteLine("Dina poäng är:" + dinaPoäng);
+                        Console.WriteLine("Dina poäng är"+ " " + dinaPoäng);
+                        Console.WriteLine("Vill du dra ett till kort? Svara med j eller n");
+                        string svar1 = Console.ReadLine();
+                        if(svar1 == "j")
+                        {
+                            int dittkort3 = slumpkort.Next(1, 11);
+                            Console.WriteLine("Ditt tredje kort är" + " " + dittkort3);
+                            int dinaPoäng2 = dittkort3 + dinaPoäng;
+                            Console.WriteLine("Dina poämng är nu " + " " + dinaPoäng2);
+                        }
+
+                        break;
+                    
+                    
+                    case "2":
+                        Console.WriteLine("Jag vann din n00b");
                         break;
 
-
-                    case 2:
-
+                    case "3":
+                        Console.WriteLine("Spelets regler är:");
                         break;
 
-                    case 3:
-
+                    case "4":
+                        Console.WriteLine("Hejdå :)");
                         break;
 
-                    case 4:
+                    default:
+                        Console.WriteLine("Du valde inte ett av alternativen");
                         break;
                 }
-
             }
-
-
+            
 
 
 
