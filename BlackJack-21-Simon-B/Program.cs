@@ -31,7 +31,7 @@ namespace Blackjack_21
                         int datornsPoäng = 0;
                         int spelarensPoäng = 0;
                         string spelareVal = "";
-                        Console.WriteLine("Välkommen till BlackJack, du och datorn kommer att få 2 slumpmässiga kort");
+                        Console.WriteLine("Välkommen till BlackJack, du och datorn kommer att få 2 slumpmässiga kort.");
                         datornsPoäng += slumpkort.Next(1, 11);
                         datornsPoäng += slumpkort.Next(1, 11);
                         spelarensPoäng += slumpkort.Next(1, 11);
