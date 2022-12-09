@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Globalization;
+
 namespace Blackjack_21
 {
     class Program
@@ -24,24 +26,78 @@ namespace Blackjack_21
                 switch(menyVal)
                 {
                     case "1":
+                        
+                        
+                        int datornsPoäng = 0;
+                        int spelarensPoäng = 0;
+                        string spelareVal = "";
+                        Console.WriteLine("Välkommen till BlackJack, du och datorn kommer att få 2 slumpmässiga kort");
+                        datornsPoäng += slumpkort.Next(1, 11);
+                        datornsPoäng += slumpkort.Next(1, 11);
+                        spelarensPoäng += slumpkort.Next(1, 11);
+                        spelarensPoäng += slumpkort.Next(1, 11);
 
-                        Console.WriteLine("Välkommen till BlackJack, du kommer att få 2 slumpmässiga kort"); 
-                        int dittkort1 = slumpkort.Next(1,11); Console.WriteLine("Ditt första kort är"+ " " + dittkort1);
-                        int dittkort2 = slumpkort.Next(1, 11); Console.WriteLine("Ditt andra kort är"+ " " + dittkort2);
-                        int dinaPoäng = dittkort1 + dittkort2;
-                        Console.WriteLine("Dina poäng är"+ " " + dinaPoäng);
-                        Console.WriteLine("Vill du dra ett till kort? Svara med j eller n");
-                        string svar1 = Console.ReadLine();
-                        if(svar1 == "j")
+                        while (spelareVal != "n" && spelarensPoäng <= 21)
                         {
-                            int dittkort3 = slumpkort.Next(1, 11);
-                            Console.WriteLine("Ditt tredje kort är" + " " + dittkort3);
-                            int dinaPoäng2 = dittkort3 + dinaPoäng;
-                            Console.WriteLine("Dina poämng är nu " + " " + dinaPoäng2);
+
+                            Console.WriteLine("Datorns poäng är:"+ " " + datornsPoäng);
+                            Console.WriteLine("Dina poäng är:"+ " " + spelarensPoäng);
+                            Console.WriteLine("Vill du dra ett till kort? svara med j eller n");
+                            spelareVal = Console.ReadLine();
+
+                            switch(spelareVal)
+                            {
+
+
+
+                                case "j":
+                                    int extrakort = slumpkort.Next(1,11);
+                                    spelarensPoäng += extrakort;
+                                    Console.WriteLine("Du drog en:" + " " + extrakort + "a");
+                                    Console.WriteLine("Ditt nya totala poäng är:" + spelarensPoäng);
+                                    break;
+
+
+                                case "n":
+                                    break;
+
+                                default:
+                                    Console.WriteLine("Välj ett av alternativen");
+                                    break;
+                            }
+
+
+                        }
+                        break;
+                       if(spelarensPoäng > 21)
+                       {
+
+                            Console.WriteLine("Du har tyvärr förlorat");
+                            break;
+                       }
+
+                       while(datornsPoäng < spelarensPoäng && datornsPoäng <= 21) 
+                       {
+
+                            int datorextrakort = slumpkort.Next(1, 11);
+                            datornsPoäng += datorextrakort;
+                            Console.WriteLine("Datorn drog en"+ " " + datorextrakort + "n");
+                       }
+
+                        Console.WriteLine("Dina poäng är:"+ " " + spelarensPoäng);
+                        Console.WriteLine("Datorns poäng är:" + " " + datornsPoäng);
+
+                        if (datornsPoäng > 21)
+                        {
+                            Console.WriteLine("Grattis du har vunnit över datorn ");
+                            Console.WriteLine("Skriv ditt namn så vi man kan se vem senaste vinnaren är");
+                            string senastekungen = Console.ReadLine();
                         }
 
-                        break;
-                    
+                        else
+                        {
+                            Console.WriteLine("Tyvärr kingen datorn vann över dig");
+                        }
                     
                     case "2":
                         Console.WriteLine("Jag vann din n00b");
